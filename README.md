@@ -95,6 +95,26 @@ We can access specific environment variables just like we would with a hash:
     /Users/lemonofpink/.rvm/gems/ruby-2.1.1@gschool
 
 
+## Changing environment variables with Ruby
+
+You can also change environment variables with Ruby:
+
+Edit environment_variables.rb:
+
+    puts "Name is: #{ENV["NAME"]}"
+    ENV["NAME"] = "Jeff"
+    puts "Now name is: #{ENV["NAME"]}"
+
+Ruby this program and pass it some other value as NAME:
+
+    |ruby-2.1.1@gschool| Hunters-MacBook-Pro in ~/gschool/dev/exercises/environment-variables
+    ± |master ✗| → NAME=hunter ruby environment_variables.rb
+    Name is: hunter
+    Now name is: Jeff
+
+As you can see, the second time ENV['NAME'] is printed, we see that value that was set by
+the Ruby code.
+
 ## Affecting the way programs run
 
 We can write Ruby programs that behave differently depending on the value of environment variables.
@@ -136,9 +156,32 @@ prints out "NOT NOW" otherwise.
 
 The last thing to understand about environment variables is that they are defined per process.
 
-Give example here.
+Edit environment_variables.rb to look the following:
 
-export a var, fork, and print out the value in the new process, what was printed? Why?
+    puts "Favorite color in parent starts as: #{ENV['FAVORITE_COLOR']}"
+
+    fork do
+      puts "Favorite color in child starts as: #{ENV['FAVORITE_COLOR']}"
+      ENV["FAVORITE_COLOR"] = 'red'
+      puts "Favorite color in child ends as: #{ENV['FAVORITE_COLOR']}"
+    end
+
+    puts "Favorite color in parent ends as: #{ENV['FAVORITE_COLOR']}"
+
+The `fork` method creates a copy of the current process. More (here)[http://en.wikipedia.org/wiki/Fork_(system_call)].
+The original method is called the parent process and newly created process is called the child.
+
+Here is what it looks like when we run that code:
+
+    |ruby-2.1.1@gschool| Hunters-MacBook-Pro in ~/gschool/dev/exercises/environment-variables
+    ± |master ✗| → FAVORITE_COLOR=orange ruby environment_variables.rb
+    Favorite color in parent starts as: orange
+    Favorite color in parent ends as: orange
+    Favorite color in child starts as: orange
+    Favorite color in child ends as: red
+
+Why does FAVORITE_COLOR start out equal to "orange" in the child process. Why doesn't changing the value of FAVORITE_COLOR
+in the child process affect the it in the parent process?
 
 Docs on fork.
 
