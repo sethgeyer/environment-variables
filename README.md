@@ -146,7 +146,7 @@ test, or production database.
 
 Edit `environment_variables.rb` to do the following:
 
-- Write a method that prints out "Migrate the <environment> database", where <database> is
+- Write a method that prints out "Migrate the [environment] database", where [environment] is
 replaced by the value of the RACK_ENV environment variable.
 
 - Write a method that prints out "FEED ME" if the HUNGRY environment variable is true and
