@@ -168,7 +168,7 @@ Edit environment_variables.rb to look the following:
 
     puts "Favorite color in parent ends as: #{ENV['FAVORITE_COLOR']}"
 
-The `fork` method creates a copy of the current process. More (here)[http://en.wikipedia.org/wiki/Fork_(system_call)].
+The `fork` method creates a copy of the current process. More [here](http://en.wikipedia.org/wiki/Fork_(system_call)).
 The original method is called the parent process and newly created process is called the child.
 
 Here is what it looks like when we run that code:
