@@ -183,8 +183,6 @@ Here is what it looks like when we run that code:
 Why does FAVORITE_COLOR start out equal to "orange" in the child process. Why doesn't changing the value of FAVORITE_COLOR
 in the child process affect the it in the parent process?
 
-Docs on fork.
-
 ## That's It!
 
 So that is what "a set of dynamic named values that can affect the way running processes will behave on a computer" means :)
