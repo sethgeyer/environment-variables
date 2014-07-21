@@ -61,8 +61,6 @@ Try setting some custom environment variables and printing them out.
 
 ## Accessing environment variables with Ruby
 
-We can write Ruby programs that behave differently depending on the value of environment variables.
-
 In Ruby, you have access to the environment variables that are set with the `ENV` hash.
 
     |ruby-2.1.1@gschool| Hunters-MacBook-Pro in ~/gschool/dev/exercises/environment-variables
@@ -99,6 +97,40 @@ We can access specific environment variables just like we would with a hash:
 
 ## Affecting the way programs run
 
+We can write Ruby programs that behave differently depending on the value of environment variables.
+
+Edit environment_variables.rb so that it looks like this:
+
+    puts ENV["WOULD_RISK_HIS_NECK_FOR_HIS_BROTHER_MAN"]
+
+Run the file:
+
+    |ruby-2.1.1@gschool| Hunters-MacBook-Pro in ~/gschool/dev/exercises/environment-variables
+    ± |master ✗| → ruby environment_variables.rb
+
+We don't see anything because we are trying to access an environment variable that isn't set.
+
+Trying running the same Ruby program, but setting the WOULD_RISK_HIS_NECK_FOR_HIS_BROTHER_MAN
+environment variable:
+
+    |ruby-2.1.1@gschool| Hunters-MacBook-Pro in ~/gschool/dev/exercises/environment-variables
+    ± |master ✗| → WOULD_RISK_HIS_NECK_FOR_HIS_BROTHER_MAN=shaft ruby environment_variables.rb
+    shaft
+
+Notice that WOULD_RISK_HIS_NECK_FOR_HIS_BROTHER_MAN=shaft causes the program to have access
+to the environment variable, so when the program prints it, we see "shaft".
+
+This is basically the same thing that happens when you type `RACK_ENV=test rake db:migrate`.
+Some Ruby code runs, checks `ENV["RACK_ENV"]`, and decides to either migrate the development,
+test, or production database.
+
+Edit `environment_variables.rb` to do the following:
+
+- Write a method that prints out "Migrate the <environment> database", where <database> is
+replaced by the value of the RACK_ENV environment variable.
+
+- Write a method that prints out "FEED ME" if the HUNGRY environment variable is true and
+prints out "NOT NOW" otherwise.
 
 ## Environment variables are per process
 
@@ -110,5 +142,6 @@ export a var, fork, and print out the value in the new process, what was printed
 
 Docs on fork.
 
+## That's It!
 
-
+So that is what "a set of dynamic named values that can affect the way running processes will behave on a computer" means :)
