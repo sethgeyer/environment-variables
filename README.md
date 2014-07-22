@@ -4,6 +4,14 @@ Environment variables are "a set of dynamic named values that can affect the way
 We have seen environment variables on our projects when we type commands like `RACK_ENV=test rake db:migrate`.
 Let's see if we can break down that definition and figure out what it means...
 
+## Goals of this warmup
+
+The main goals of this warmup are the ability to:
+
+- access environment variables in a Ruby program
+- write Ruby code that behaves differently depending on the value of a certain environment variable
+- understand how `rake db:migrate` is different than `RACK_ENV=test rake db:migrate`
+
 ## Named Values
 
 Open a Terminal and type `env` and you'll see something similar to this:
