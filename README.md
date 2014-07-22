@@ -102,6 +102,15 @@ We can access specific environment variables just like we would with a hash:
     ± |master ✗| → ruby -e "puts ENV['GEM_HOME']"
     /Users/lemonofpink/.rvm/gems/ruby-2.1.1@gschool
 
+## How do environment variables get set in a Ruby program
+
+The environment variables that are accessible to a Ruby program are inherited
+from the environment of the process that started the Ruby program.
+
+Typing `env` at the command line shows you what environment variables are set
+in the terminal process. When you run `ruby environment_variables.rb` from the
+command line, the `ENV` hash has the same set of environment variables that the
+terminal had.
 
 ## Changing environment variables with Ruby
 
